@@ -20,13 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="616dp" />
+    <ImageButton
+
+        android:id="@+id/nfButton"
+        android:layout_width="83dp"
+        android:layout_height="78dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/ic_round"
+        android:src="@drawable/ic_add"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

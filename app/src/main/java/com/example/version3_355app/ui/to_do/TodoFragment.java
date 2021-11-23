@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 //import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.version3_355app.R;
 import com.example.version3_355app.databinding.FragmentToDoBinding;
+import com.example.version3_355app.ui.calendar.CalendarFragment;
 
 public class TodoFragment extends Fragment {
 
@@ -30,6 +33,17 @@ public class TodoFragment extends Fragment {
         return root;
     }
 
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.todoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(TodoFragment.this)
+                        .navigate(R.id.nav_action_frag1);
+            }
+        });
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
