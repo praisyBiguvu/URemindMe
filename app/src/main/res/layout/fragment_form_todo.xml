@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/pastel_teal"
     tools:context=".ui.to_do.ToDoFormFragment"
-    android:layout_width="340dp"
-    android:layout_height="620dp">
+    android:layout_width="387dp"
+    android:layout_height="632dp">
 
     <ImageButton
 
