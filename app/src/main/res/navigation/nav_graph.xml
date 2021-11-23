@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.version3_355app.ToDoFormFragment"
+        android:name="com.example.version3_355app.ui.to_do.ToDoFormFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_form_todo">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.version3_355app.ClassScheduleFormFragment"
+        android:name="com.example.version3_355app.ui.classSchedule.ClassScheduleFormFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/form_classSchedule">
 

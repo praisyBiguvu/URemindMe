@@ -40,7 +40,7 @@ public class TodoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(TodoFragment.this)
-                        .navigate(R.id.nav_action_frag1);
+                        .navigate(R.id.nav_action_todo_to_form);
             }
         });
     }
