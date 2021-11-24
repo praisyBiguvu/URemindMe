@@ -4,7 +4,6 @@ package com.example.version3_355app.ui.settings;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +30,34 @@ public class Settings extends AppCompatActivity{
         settingsList.add("Account");
         settingsList.add("Notifications");
         settingsList.add("Theme");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, settingsList);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener( new  AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+
+                    case 0:
+                        Intent i = new Intent(Settings.this,
+                                Account.class);
+                        startActivity(i);
+                        break;
+                    case 1:
+                        Intent i1 = new Intent( Settings.this,
+                                NotificationSetting.class);
+                        startActivity(i1);
+                        break;
+                    case 2:
+                        Intent i2 = new Intent(Settings.this,
+                                Appearance.class);
+                        startActivity(i2);
+                        break;
+                }
+            }
+
+        });
 
     }
 }
