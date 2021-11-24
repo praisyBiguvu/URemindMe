@@ -1,6 +1,5 @@
 package com.example.version3_355app.ui.calendar;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.version3_355app.R;
 import com.example.version3_355app.databinding.FragmentCalendarBinding;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CalendarFragment extends Fragment {
@@ -91,6 +90,18 @@ public class CalendarFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.calButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CalendarFragment.this)
+                        .navigate(R.id.nav_action_frag1);
+            }
+        });
     }
 
     @Override
