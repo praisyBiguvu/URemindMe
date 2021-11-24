@@ -28,8 +28,8 @@ public class Settings extends AppCompatActivity{
         ListView listView = (ListView) findViewById(R.id.listview); // list in your XML
 
         settingsList.add("Account");
-        settingsList.add("Notifications");
-        settingsList.add("Theme");
+        settingsList.add("NotificationSetting");
+        settingsList.add("Appearance");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, settingsList);
         listView.setAdapter(adapter);
