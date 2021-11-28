@@ -25,9 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.settings.Account" />
         <activity android:name=".ui.settings.NotificationSetting" />
-        <activity android:name=".ui.settings.Appearance" />
     </application>
 
 </manifest>
