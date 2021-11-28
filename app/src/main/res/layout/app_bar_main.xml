@@ -22,8 +22,8 @@
 
     <include
         layout="@layout/content_main"
-        android:layout_height="662dp"
-        android:layout_width="410dp" />
+        android:layout_width="match_parent"
+        android:layout_height="662dp" />
 
 
 
