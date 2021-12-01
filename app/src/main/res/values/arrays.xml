@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_syncConnectionType_entries">
-        <item>Dark</item>
+    <string-array name="theme_entries">
         <item>Light</item>
+        <item>Dark</item>
         <item>System</item>
     </string-array>
-    <string-array name="pref_syncConnectionType_values">
-        <item>Dark</item>
-        <item>Light</item>
-        <item>System</item>
+
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
     </string-array>
+
+
+
+
+
 </resources>
