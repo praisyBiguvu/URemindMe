@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.version3_355app.R;
-import com.example.version3_355app.databinding.FragmentClassScheduleBinding;
+import com.example.version3_355app.databinding.ClassScheduleFragmentBinding;
 import com.example.version3_355app.databinding.FragmentNoteBinding;
 import com.example.version3_355app.ui.note.NoteFragment;
 import com.example.version3_355app.ui.note.NoteViewModel;
@@ -30,14 +30,14 @@ public class ClassScheduleFragment extends Fragment {
     }
 
     private ClassScheduleViewModel classScheduleViewModel;
-    private FragmentClassScheduleBinding binding;
+    private ClassScheduleFragmentBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         classScheduleViewModel =
                 new ViewModelProvider(this).get(ClassScheduleViewModel.class);
 
-        binding = FragmentClassScheduleBinding.inflate(inflater, container, false);
+        binding = ClassScheduleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;

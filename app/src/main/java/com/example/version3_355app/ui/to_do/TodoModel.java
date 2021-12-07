@@ -1,6 +1,8 @@
 package com.example.version3_355app.ui.to_do;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TodoModel {
@@ -9,11 +11,28 @@ public class TodoModel {
     private Time time;
     private String course;
 
-    public TodoModel(String Assignment, Date date, Time time, String course){
-        this.Assignment= Assignment;
-        this.date=date;
-        this.time=time;
-        this.course=course;
+    public Date date(int m, int d, int y) {
+
+        String M = String.valueOf(m);
+        String D = String.valueOf(d);
+        String Y = String.valueOf(y);
+        String df = M.concat("/").concat(D).concat("/").concat(Y);
+        Date dfinal = null;
+        try {
+            dfinal = new SimpleDateFormat("dd/MM/yyyy").parse(df);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dfinal;
+
+    }
+
+    public TodoModel(String Assignment, int month, int day, int year, Time time, String course) {
+        this.Assignment = Assignment;
+        Date d = date(month, day, year);
+        this.time = time;
+        this.course = course;
+
     }
 
     @Override
@@ -35,7 +54,6 @@ public class TodoModel {
     }
 
     public Date getDate() {
-        
         return date;
     }
 
@@ -59,4 +77,5 @@ public class TodoModel {
         this.course = course;
     }
 }
+
 

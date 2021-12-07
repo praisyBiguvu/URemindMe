@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.version3_355app.R;
 import com.example.version3_355app.databinding.FragmentToDoBinding;
 import com.example.version3_355app.ui.calendar.CalendarFragment;
+import com.example.version3_355app.ui.to_do.ToDoFormFragment;
 
 public class TodoFragment extends Fragment {
 
@@ -36,13 +37,8 @@ public class TodoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.todoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(TodoFragment.this)
-                        .navigate(R.id.nav_action_todo_to_form);
-            }
-        });
+        binding.todoButton.setOnClickListener(view1 -> NavHostFragment.findNavController(TodoFragment.this)
+                .navigate(R.id.nav_action_todo_to_form));
     }
     @Override
     public void onDestroyView() {
