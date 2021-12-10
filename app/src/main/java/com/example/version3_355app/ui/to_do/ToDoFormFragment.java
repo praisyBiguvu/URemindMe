@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.version3_355app.DataBaseHelper;
+import com.example.version3_355app.MainActivity;
 import com.example.version3_355app.R;
 import com.example.version3_355app.databinding.FormTodoBinding;
 
@@ -41,7 +44,7 @@ public class ToDoFormFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        submit= getView().findViewById(R.id.submit);
+        submit= getView().findViewById(R.id.submit);
 //        backButton= getView().findViewById(R.id.backButton);
         et_assignment= getView().findViewById(R.id.et_assignment);
         et_month= getView().findViewById(R.id.et_month);
@@ -50,19 +53,33 @@ public class ToDoFormFragment extends Fragment {
         et_time = getView().findViewById(R.id.et_time);
 //        et_class= getView().findViewById(R.id.et_class);
 
-        binding.submit.setOnClickListener(new View.OnClickListener() {
-            @Override
+        submit.setOnClickListener((v) -> {
+//            @Override
 
-            public void onClick(View view) {
-                TodoModel to_do_form= new TodoModel(et_assignment.getText().toString(),
-                        Integer.parseInt(et_month.getText().toString(),10),
-                        Integer.parseInt(et_day.getText().toString(),10),
-                        Integer.parseInt(et_year.getText().toString(), 10),
-                        Time.valueOf(et_time.getText().toString()), "TBD");
+//            public void onClick(View view) {
+                TodoModel to_do_form;
+                try {
+                    to_do_form= new TodoModel(et_assignment.getText().toString(),
+                            Integer.parseInt(et_month.getText().toString(),10),
+                            Integer.parseInt(et_day.getText().toString(),10),
+                            Integer.parseInt(et_year.getText().toString(), 10),
+                            Time.valueOf(et_time.getText().toString()), "TBD");
+                }
+                catch (Exception e){
+                     to_do_form= new TodoModel("well that failed",
+                             01, 22, 2021, Time.valueOf("00:00:00"), "cmsc 257");
 
+
+
+                }
+
+
+                DataBaseHelper dataBaseHelper= new DataBaseHelper(getContext());
+                boolean success= dataBaseHelper.addOne(to_do_form);
+                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(ToDoFormFragment.this)
                         .navigate(R.id.nav_action_form_to_todo);
-            }
+
         });
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {

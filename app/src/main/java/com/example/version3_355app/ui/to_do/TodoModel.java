@@ -7,7 +7,9 @@ import java.util.Date;
 
 public class TodoModel {
     private String Assignment;
-    private Date date;
+    private int month;
+    private int day;
+    private int year;
     private Time time;
     private String course;
 
@@ -29,6 +31,9 @@ public class TodoModel {
 
     public TodoModel(String Assignment, int month, int day, int year, Time time, String course) {
         this.Assignment = Assignment;
+        this.month=month;
+        this.day=day;
+        this.year=year;
         Date d = date(month, day, year);
         this.time = time;
         this.course = course;
@@ -39,7 +44,9 @@ public class TodoModel {
     public String toString() {
         return "TodoModel{" +
                 "Assignment='" + Assignment + '\'' +
-                ", date=" + date +
+                ", month=" + month +
+                ", day=" + day +
+                ", year=" + year +
                 ", time=" + time +
                 ", course='" + course + '\'' +
                 '}';
@@ -49,17 +56,34 @@ public class TodoModel {
         return Assignment;
     }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public void setAssignment(String assignment) {
         Assignment = assignment;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public Time getTime() {
         return time;
