@@ -59,14 +59,14 @@ public class ToDoFormFragment extends Fragment {
 //            public void onClick(View view) {
                 TodoModel to_do_form;
                 try {
-                    to_do_form= new TodoModel(et_assignment.getText().toString(),
+                    to_do_form= new TodoModel(-1,et_assignment.getText().toString(),
                             Integer.parseInt(et_month.getText().toString(),10),
                             Integer.parseInt(et_day.getText().toString(),10),
                             Integer.parseInt(et_year.getText().toString(), 10),
                             Time.valueOf(et_time.getText().toString()), "TBD");
                 }
                 catch (Exception e){
-                     to_do_form= new TodoModel("well that failed",
+                     to_do_form= new TodoModel(-1,"well that failed",
                              01, 22, 2021, Time.valueOf("00:00:00"), "cmsc 257");
 
 

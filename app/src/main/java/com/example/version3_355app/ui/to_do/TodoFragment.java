@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -61,6 +62,19 @@ public class TodoFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(TodoFragment.this)
                         .navigate(R.id.nav_action_todo_to_form);
+            }
+        });
+
+        lv_todoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TodoModel clickedTodo= (TodoModel) adapterView.getItemAtPosition(i);
+                dataBaseHelper.deleteOne(clickedTodo);
+
+                ArrayAdapter todoArrayAdapter= new ArrayAdapter<TodoModel>(getActivity(), android.R.layout.simple_list_item_1,dataBaseHelper.everything());
+                lv_todoList.setAdapter(todoArrayAdapter);
+                Toast.makeText(getActivity(), "Deleted " + clickedTodo.toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

@@ -6,12 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TodoModel {
+    private int id;
     private String Assignment;
     private int month;
     private int day;
     private int year;
     private Time time;
     private String course;
+
+    @Override
+    public String toString() {
+        return Assignment + "("+ course + ")"+  "\n" +
+                month + "/" + day + "/" + year + "   @ " + time ;
+    }
 
     public Date date(int m, int d, int y) {
 
@@ -29,7 +36,7 @@ public class TodoModel {
 
     }
 
-    public TodoModel(String Assignment, int month, int day, int year, Time time, String course) {
+    public TodoModel(int id, String Assignment, int month, int day, int year, Time time, String course) {
         this.Assignment = Assignment;
         this.month=month;
         this.day=day;
@@ -38,18 +45,6 @@ public class TodoModel {
         this.time = time;
         this.course = course;
 
-    }
-
-    @Override
-    public String toString() {
-        return "TodoModel{" +
-                "Assignment='" + Assignment + '\'' +
-                ", month=" + month +
-                ", day=" + day +
-                ", year=" + year +
-                ", time=" + time +
-                ", course='" + course + '\'' +
-                '}';
     }
 
     public String getAssignment() {
@@ -99,6 +94,14 @@ public class TodoModel {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

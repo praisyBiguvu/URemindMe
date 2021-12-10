@@ -16,6 +16,9 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
+
+    public static final String TD_TABLE = "TD_table";
+    public static final String TO_DO_TABLE = "TO_DO_TABLE";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_ASSIGNMENT = "ASSIGNMENT";
     public static final String COLUMN_COURSE = "COURSE";
@@ -23,8 +26,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DAY = "DAY";
     public static final String COLUMN_YEAR = "YEAR";
     public static final String COLUMN_TIME = "TIME";
-    public static final String TD_TABLE = "TD_table";
-    public static final String TO_DO_TABLE = "TO_DO_TABLE";
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "toDo.db", null, 1);
@@ -43,13 +44,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //                + COLUMN_DAY + " INT,"
 //                + COLUMN_YEAR + " INT,"
 //                + COLUMN_TIME + " TIME)";
-        sqLiteDatabase.execSQL("CREATE TABLE " + TO_DO_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " ASSIGNMENT TEXT," +
-                " COURSE TEXT," +
-                " MONTH INT," +
-                " DAY INT," +
-                " YEAR INT," +
-                " TIME TIME)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TO_DO_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " " + COLUMN_ASSIGNMENT + " TEXT," +
+                " " + COLUMN_COURSE + " TEXT," +
+                " " + COLUMN_MONTH + " INT," +
+                " " + COLUMN_DAY + " INT," +
+                " " + COLUMN_YEAR + " INT," +
+                " " + COLUMN_TIME + " TIME)");
     }
 
     //this is called if the database version number changes. It prevents users apps from breaking when you change the database design
@@ -65,6 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues cv= new ContentValues();
 
+        cv.put(COLUMN_ID, todoModel.getId()) ;
         cv.put(COLUMN_ASSIGNMENT, todoModel.getAssignment());
         cv.put(COLUMN_COURSE, todoModel.getCourse());
         cv.put(COLUMN_MONTH, todoModel.getMonth());
@@ -97,7 +99,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     int year= cursor.getInt(5);
                     String time= cursor.getString(6);
 
-                    TodoModel newtoDo= new TodoModel(assignment, month, day,year, Time.valueOf(time), course);
+                    TodoModel newtoDo= new TodoModel(id, assignment, month, day,year, Time.valueOf(time), course);
                     returnlist.add(newtoDo);
                 }
                 while (cursor.moveToNext());
@@ -110,5 +112,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cursor.close();
             db.close();
             return returnlist;
+        }
+
+        public boolean deleteOne(TodoModel todoModel){
+            SQLiteDatabase db= this.getWritableDatabase();
+            String queryString= "DELETE FROM "+ TO_DO_TABLE + " WHERE " + COLUMN_ID + " = "+ todoModel.getId ();
+
+            Cursor cursor = db.rawQuery(queryString, null);
+            if(cursor.moveToFirst()){
+                return true;
+            }
+            else{
+                return false;
+            }
+
         }
 }
