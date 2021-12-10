@@ -44,13 +44,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //                + COLUMN_DAY + " INT,"
 //                + COLUMN_YEAR + " INT,"
 //                + COLUMN_TIME + " TIME)";
-        sqLiteDatabase.execSQL("CREATE TABLE " + TO_DO_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " " + COLUMN_ASSIGNMENT + " TEXT," +
-                " " + COLUMN_COURSE + " TEXT," +
-                " " + COLUMN_MONTH + " INT," +
-                " " + COLUMN_DAY + " INT," +
-                " " + COLUMN_YEAR + " INT," +
-                " " + COLUMN_TIME + " TIME)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TO_DO_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_ASSIGNMENT + " TEXT," + COLUMN_COURSE + " TEXT," + COLUMN_MONTH + " INT," + COLUMN_DAY + " INT," + COLUMN_YEAR + " INT," + COLUMN_TIME + " TIME)");
     }
 
     //this is called if the database version number changes. It prevents users apps from breaking when you change the database design
@@ -64,17 +58,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean addOne(TodoModel todoModel){
         SQLiteDatabase db= this.getWritableDatabase();
+        String selectQuery = "SELECT  * FROM " + TO_DO_TABLE;
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        int idd=0;
+//        if(cursor.moveToLast()){
+//            idd= cursor.getInt(0);
+//        }
+//        int id2= idd+1;
         ContentValues cv= new ContentValues();
-
-        cv.put(COLUMN_ID, todoModel.getId()) ;
+//        cv.put(COLUMN_ID, id2);
         cv.put(COLUMN_ASSIGNMENT, todoModel.getAssignment());
         cv.put(COLUMN_COURSE, todoModel.getCourse());
-        cv.put(COLUMN_MONTH, todoModel.getMonth());
+        cv.put(COLUMN_MONTH, todoModel.getMonth());;
         cv.put(COLUMN_DAY, todoModel.getDay());
         cv.put(COLUMN_YEAR, todoModel.getYear());
         cv.put(COLUMN_TIME, String.valueOf(todoModel.getTime()));
 
-        long insert = db.insert(TO_DO_TABLE, null, cv);
+       long insert = db.insert(TO_DO_TABLE, null,cv );
         if (insert==-1){
             return false;
         }
@@ -85,11 +85,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         public List<TodoModel> everything () {
             List<TodoModel> returnlist= new ArrayList<>();
-            String queryString= "SELECT * FROM " + TO_DO_TABLE;
 
+            String queryString= "SELECT * FROM " + TO_DO_TABLE;
             SQLiteDatabase db= this.getReadableDatabase();
             Cursor cursor = db.rawQuery(queryString, null);
-            if (cursor.moveToNext()){
+            if (cursor.moveToFirst()){
                 do{
                     int id= cursor.getInt(0);
                     String assignment= cursor.getString(1);
@@ -99,7 +99,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     int year= cursor.getInt(5);
                     String time= cursor.getString(6);
 
-                    TodoModel newtoDo= new TodoModel(id, assignment, month, day,year, Time.valueOf(time), course);
+                    TodoModel newtoDo= new TodoModel(id,assignment, month, day,year, Time.valueOf(time), course);
+                    newtoDo.setId(id);
                     returnlist.add(newtoDo);
                 }
                 while (cursor.moveToNext());
@@ -116,7 +117,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         public boolean deleteOne(TodoModel todoModel){
             SQLiteDatabase db= this.getWritableDatabase();
-            String queryString= "DELETE FROM "+ TO_DO_TABLE + " WHERE " + COLUMN_ID + " = "+ todoModel.getId ();
+            String queryString= "DELETE FROM "+ TO_DO_TABLE + " WHERE " + COLUMN_ID + " = "+ todoModel.getId();
 
             Cursor cursor = db.rawQuery(queryString, null);
             if(cursor.moveToFirst()){

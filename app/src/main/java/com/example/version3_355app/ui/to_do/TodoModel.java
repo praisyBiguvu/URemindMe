@@ -16,7 +16,7 @@ public class TodoModel {
 
     @Override
     public String toString() {
-        return Assignment + "("+ course + ")"+  "\n" +
+        return id+ " " +Assignment + "("+ course + ")"+  "\n" +
                 month + "/" + day + "/" + year + "   @ " + time ;
     }
 
