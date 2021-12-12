@@ -72,10 +72,10 @@
         android:id="@+id/nav_note"
         android:name="com.example.version3_355app.ui.note.NoteFragment"
         android:label="@string/menu_note"
-        tools:layout="@layout/fragment_note" >
+        tools:layout="@layout/fragment_note">
         <action
-        android:id="@+id/nav_action_note_to_noteform"
-        app:destination="@id/nav_noteForm" />
+            android:id="@+id/nav_action_note_to_noteform"
+            app:destination="@id/nav_noteForm" />
     </fragment>
 
 <!--    note Form-->
@@ -83,19 +83,15 @@
         android:id="@+id/nav_noteForm"
         android:name="com.example.version3_355app.ui.note.NoteFormFragment"
         android:label="@string/menu_note"
-        tools:layout="@layout/fragment_note_form" />
-
-<!--    settings-->
-    <fragment
+        tools:layout="@layout/fragment_note_form" >
+        <action
+            android:id="@+id/action_nav_noteForm_to_nav_note"
+            app:destination="@id/nav_note" />
+    </fragment>
+  
+    <activity
         android:id="@+id/nav_settings"
-        android:name="com.example.version3_355app.ui.settings.SettingsFragment"
+        android:name="com.example.version3_355app.ui.settings.SettingsActivity"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
-
-<!--    profile-->
-    <fragment
-        android:id="@+id/nav_Profile"
-        android:name="com.example.version3_355app.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/activity_settings" />
 </navigation>
