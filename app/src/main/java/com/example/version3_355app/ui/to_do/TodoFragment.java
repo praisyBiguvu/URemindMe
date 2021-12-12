@@ -1,6 +1,7 @@
 package com.example.version3_355app.ui.to_do;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 //import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 //import androidx.lifecycle.Observer;
+import androidx.fragment.app.ListFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -51,9 +53,24 @@ public class TodoFragment extends Fragment {
         DataBaseHelper dataBaseHelper= new DataBaseHelper(getContext());
         List<TodoModel> everything= dataBaseHelper.everything();
 
-        ArrayAdapter todoArrayAdapter= new ArrayAdapter<TodoModel>(getActivity(), android.R.layout.simple_list_item_1,everything);
+        ArrayAdapter todoArrayAdapter= new ArrayAdapter<TodoModel>(getActivity(), android.R.layout.simple_expandable_list_item_1,everything);
         lv_todoList.setAdapter(todoArrayAdapter);
 
+//        ListView lv_todolist= getView().findViewById(R.id.todoList);
+//        List<String> assignments=dataBaseHelper.assignments();
+//
+//        ArrayAdapter todoArrayAdapter= new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1,
+//                assignments);
+//        lv_todolist.setAdapter(todoArrayAdapter);
+//
+//        ListView lv_todolist2= getView().findViewById(R.id.todoList2);
+//        List<String> dates=dataBaseHelper.dates();
+//
+//        ArrayAdapter todoArrayAdapter2= new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1,
+//                dates);
+//        lv_todolist2.setAdapter(todoArrayAdapter2);
 
 //        Toast.makeText(getContext(), everything.toString(), Toast.LENGTH_SHORT).show();
 
@@ -71,7 +88,7 @@ public class TodoFragment extends Fragment {
                 TodoModel clickedTodo= (TodoModel) adapterView.getItemAtPosition(i);
                 dataBaseHelper.deleteOne(clickedTodo);
 
-                ArrayAdapter todoArrayAdapter= new ArrayAdapter<TodoModel>(getActivity(), android.R.layout.simple_list_item_1,dataBaseHelper.everything());
+                ArrayAdapter todoArrayAdapter= new ArrayAdapter<TodoModel>(getActivity(), android.R.layout.simple_expandable_list_item_1,dataBaseHelper.everything());
                 lv_todoList.setAdapter(todoArrayAdapter);
                 Toast.makeText(getActivity(), "Deleted " + clickedTodo.toString(), Toast.LENGTH_SHORT).show();
 

@@ -11,7 +11,7 @@ public class TodoViewModel extends ViewModel {
 
     public TodoViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("TODOVIEW");
+        mText.setValue("TO DO");
     }
 
     public LiveData<String> getText() {

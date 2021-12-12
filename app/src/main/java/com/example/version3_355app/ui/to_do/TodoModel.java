@@ -1,5 +1,8 @@
 package com.example.version3_355app.ui.to_do;
 
+import static java.lang.String.format;
+
+import java.io.PrintStream;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,10 +17,14 @@ public class TodoModel {
     private Time time;
     private String course;
 
+
     @Override
     public String toString() {
-        return id+ " " +Assignment + "("+ course + ")"+  "\n" +
-                month + "/" + day + "/" + year + "   @ " + time ;
+
+        String date= String.format("%02d/%02d/%02d", month, day, year);
+        String assignment= String.format("%-30s %n", Assignment);
+
+        return assignment  + course + "  "+ date + "  " + time;
     }
 
     public Date date(int m, int d, int y) {

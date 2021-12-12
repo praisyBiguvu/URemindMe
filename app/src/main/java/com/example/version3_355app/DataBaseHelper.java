@@ -58,15 +58,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean addOne(TodoModel todoModel){
         SQLiteDatabase db= this.getWritableDatabase();
-        String selectQuery = "SELECT  * FROM " + TO_DO_TABLE;
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//        int idd=0;
-//        if(cursor.moveToLast()){
-//            idd= cursor.getInt(0);
-//        }
-//        int id2= idd+1;
+
         ContentValues cv= new ContentValues();
-//        cv.put(COLUMN_ID, id2);
         cv.put(COLUMN_ASSIGNMENT, todoModel.getAssignment());
         cv.put(COLUMN_COURSE, todoModel.getCourse());
         cv.put(COLUMN_MONTH, todoModel.getMonth());;
@@ -82,6 +75,60 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
         }
+        public List<String> assignments(){
+            List <String>returnlist= new ArrayList<>();
+            String queryString= "SELECT * FROM " + TO_DO_TABLE;
+
+            SQLiteDatabase db= this.getReadableDatabase();
+            Cursor cursor= db.rawQuery(queryString, null);
+
+            if (cursor.moveToFirst()){
+                do{
+
+                    String assignment= cursor.getString(1);
+                    String course= cursor.getString(2);
+                    returnlist.add(assignment+"\n"+course);
+                }
+                while (cursor.moveToNext());
+
+            }
+            else    {
+
+                //failure. do not add anything to the list
+            }
+                cursor.close();
+                db.close();
+
+            return returnlist;
+        }
+    public List<String> dates(){
+        List <String>returnlist= new ArrayList<>();
+        String queryString= "SELECT * FROM " + TO_DO_TABLE;
+
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            do{
+
+                int month= cursor.getInt(3);
+                int day= cursor.getInt(4);
+                int year= cursor.getInt(5);
+                String time= cursor.getString(6);
+                returnlist.add(month +"/"+day+"/"+year +"\n" +time);
+            }
+            while (cursor.moveToNext());
+
+        }
+        else    {
+
+            //failure. do not add anything to the list
+        }
+        cursor.close();
+        db.close();
+
+        return returnlist;
+    }
 
         public List<TodoModel> everything () {
             List<TodoModel> returnlist= new ArrayList<>();
@@ -112,7 +159,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
             cursor.close();
             db.close();
-            return returnlist;
+            return (List<TodoModel>) returnlist;
         }
 
         public boolean deleteOne(TodoModel todoModel){

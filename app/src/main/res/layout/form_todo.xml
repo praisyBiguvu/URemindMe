@@ -33,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        android:text="00" />
+        android:hint="00"
+         />
 
     <ImageButton
 
@@ -59,6 +60,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="468dp"
         android:ems="10"
+        android:hint="homework, test, quiz, proj etc.,"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        android:text="00" />
+        android:hint="00" />
 
     <TextView
         android:id="@+id/classSelect"
@@ -115,7 +117,7 @@
         android:layout_marginBottom="296dp"
         android:ems="10"
         android:inputType="time"
-        android:text="00:00:00"
+        android:hint="00:00:00"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +135,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        android:text="00" />
+        android:hint="00" />
 
     <Button
         android:id="@+id/submit"
@@ -148,43 +150,47 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
-        android:id="@+id/cmsc257"
+        android:id="@+id/et_cmsc257"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="36dp"
         android:text="CMSC 257"
+        android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classSelect" />
 
     <Switch
-        android:id="@+id/cmsc303"
+        android:id="@+id/et_cmsc303"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:layout_marginTop="36dp"
+        android:checked="false"
         android:text="CMSC 303"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classSelect" />
 
     <Switch
-        android:id="@+id/cmsc355"
+        android:id="@+id/et_cmsc355"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:text="CMSC 355"
+        android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmsc257" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cmsc257" />
 
     <Switch
-        android:id="@+id/chem101"
+        android:id="@+id/et_chem101"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:layout_marginTop="24dp"
         android:text="CHEM 101"
+        android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmsc303" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cmsc303" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
