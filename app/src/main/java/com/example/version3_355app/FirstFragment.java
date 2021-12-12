@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.version3_355app.databinding.FragmentClassFormBinding;
+import com.example.version3_355app.databinding.FragmentFirstBinding;
 
-public class ClassScheduleFormFragment extends Fragment {
+public class FirstFragment extends Fragment {
 
-    private FragmentClassFormBinding binding;
+    private FragmentFirstBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class ClassScheduleFormFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentClassFormBinding.inflate(inflater, container, false);
+        binding = FragmentFirstBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,13 +29,13 @@ public class ClassScheduleFormFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        binding.clsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(ClassScheduleFormFragment.this)
-//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-//            }
-//        });
+        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            }
+        });
     }
 
     @Override

@@ -1,17 +1,15 @@
-package com.example.version3_355app.ui.to_do;
+package com.example.version3_355app.ui.classSchedule;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.version3_355app.ui.to_do.TodoModel;
 
-public class TodoViewModel extends ViewModel {
-
+public class ClassScheduleViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public TodoViewModel() {
+    public ClassScheduleViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("TO DO");
+        mText.setValue("This is ClassSchedule fragment");
     }
 
     public LiveData<String> getText() {
