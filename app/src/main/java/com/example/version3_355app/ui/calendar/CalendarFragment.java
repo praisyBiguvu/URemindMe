@@ -99,7 +99,7 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(CalendarFragment.this)
-                        .navigate(R.id.nav_action_frag1);
+                        .navigate(R.id.nav_action_cal_to_form);
             }
         });
     }

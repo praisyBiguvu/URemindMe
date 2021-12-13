@@ -5,68 +5,93 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-    <fragment android:id="@+id/nav_form_todo"
-        android:name="com.example.version3_355app.ToDoFormFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_form_todo"/>
 
-    <fragment android:id="@+id/nav_form_class"
-        android:name="com.example.version3_355app.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_class_form"/>
-
+<!--    home-->
     <fragment android:id="@+id/nav_home"
         android:name="com.example.version3_355app.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home"
         />
 
+<!--    class Schedule Fragment-->
+    <fragment android:id="@+id/nav_class"
+        android:name="com.example.version3_355app.ui.classSchedule.ClassScheduleFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/form_todo">
+        <action
+            android:id="@+id/nav_action_class_to_form"
+            app:destination="@id/nav_form_class" />
+    </fragment>
+
+<!--    class form-->
+    <fragment android:id="@+id/nav_form_class"
+        android:name="com.example.version3_355app.ui.classSchedule.ClassScheduleFormFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_class_form"/>
+
+<!--    to do form-->
+    <fragment android:id="@+id/nav_form_todo"
+        android:name="com.example.version3_355app.ui.to_do.ToDoFormFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/form_todo">
+        <action
+            android:id="@+id/nav_action_form_to_cal"
+            app:destination="@id/nav_calendar" />
+        <action
+            android:id="@+id/nav_action_form_to_todo"
+            app:destination="@id/nav_to_do" />
+    </fragment>
+
+
+
+
+<!--    calendar Fragment-->
     <fragment
         android:id="@+id/nav_calendar"
         android:name="com.example.version3_355app.ui.calendar.CalendarFragment"
         android:label="@string/menu_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
-            android:id="@+id/nav_action_frag1"
+            android:id="@+id/nav_action_cal_to_form"
             app:destination="@id/nav_form_todo" />
     </fragment>
 
-
+<!--    to do Fragment   -->
     <fragment
         android:id="@+id/nav_to_do"
         android:name="com.example.version3_355app.ui.to_do.TodoFragment"
         android:label="@string/menu_to_do"
         tools:layout="@layout/fragment_to_do" >
         <action
-            android:id="@+id/nav_action_frag1"
+            android:id="@+id/nav_action_todo_to_form"
             app:destination="@id/nav_form_todo" />
     </fragment>
 
+<!--    Note Fragment-->
     <fragment
         android:id="@+id/nav_note"
         android:name="com.example.version3_355app.ui.note.NoteFragment"
         android:label="@string/menu_note"
-        tools:layout="@layout/fragment_note" >
+        tools:layout="@layout/fragment_note">
         <action
-        android:id="@+id/nav_action_note_to_noteform"
-        app:destination="@id/nav_noteForm" />
+            android:id="@+id/nav_action_note_to_noteform"
+            app:destination="@id/nav_noteForm" />
     </fragment>
 
+<!--    note Form-->
     <fragment
         android:id="@+id/nav_noteForm"
         android:name="com.example.version3_355app.ui.note.NoteFormFragment"
         android:label="@string/menu_note"
-        tools:layout="@layout/fragment_note_form" />
-
-    <fragment
+        tools:layout="@layout/fragment_note_form" >
+        <action
+            android:id="@+id/action_nav_noteForm_to_nav_note"
+            app:destination="@id/nav_note" />
+    </fragment>
+  
+    <activity
         android:id="@+id/nav_settings"
-        android:name="com.example.version3_355app.ui.settings.SettingsFragment"
+        android:name="com.example.version3_355app.ui.settings.SettingsActivity"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
-
-    <fragment
-        android:id="@+id/nav_Profile"
-        android:name="com.example.version3_355app.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/activity_settings" />
 </navigation>
