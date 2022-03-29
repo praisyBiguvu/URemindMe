@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <SwitchPreference
+        android:key="pref_sync"
+        android:title="Notifications"
+        android:summary="Do you want to recieve notifications"
+        android:defaultValue="true"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        
+        />
+
+    <ListPreference
+        android:key="list_prefrence_key"
+        android:title="Appreance"
+        android:entries="@array/theme_entries"
+        android:entryValues="@array/theme_values"
+        android:defaultValue="defaultvalue"
+        android:summary="Choose the appreance of the app"
+        android:icon="@drawable/ic_baseline_remove_red_eye_24"
+
+        />
+
+</PreferenceScreen>
